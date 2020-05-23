@@ -32,6 +32,15 @@ MiddlewareRegistry.register(store => next => action => {
     case DOMINANT_SPEAKER_CHANGED: {
         const localParticipant = getLocalParticipant(store.getState());
 
+        logger.log('KIVANC: LARGE-VIDEO: DOMINANT_SPEAKER_CHANGED'); //KIVANC
+        const config = store.getState()['features/base/config']; //KIVANC
+        const defaultLastN = typeof config.channelLastN === 'undefined' ? -1 : config.channelLastN; //KIVANC
+        let lastN = defaultLastN; //KIVANC
+
+        if (lastN === 1) { //KIVANC
+          return;
+        }
+
         if (localParticipant && localParticipant.id !== action.participant.id) {
             store.dispatch(selectParticipantInLargeVideo());
         }

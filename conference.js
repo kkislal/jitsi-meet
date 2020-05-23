@@ -2072,7 +2072,8 @@ export default {
         room.on(
             JitsiConferenceEvents.DOMINANT_SPEAKER_CHANGED,
             id => {
-            APP.store.dispatch(dominantSpeakerChanged(id, room)); //KIVANC 
+            logger.log('KIVANC: CONFERENCE: DOMINANT_SPEAKER_CHANGED'); //KIVANC
+            APP.store.dispatch(dominantSpeakerChanged(id, room)); //KIVANC
             });
 
         room.on(
