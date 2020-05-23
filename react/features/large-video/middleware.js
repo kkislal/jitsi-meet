@@ -38,6 +38,7 @@ MiddlewareRegistry.register(store => next => action => {
         let lastN = defaultLastN; //KIVANC
 
         if (lastN === 1) { //KIVANC
+          logger.log('KIVANC: LARGE-VIDEO: DOMINANT_SPEAKER_CHANGED - LASTN FILTER'); //KIVANC
           return;
         }
 
